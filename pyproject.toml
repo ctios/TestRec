@@ -1,0 +1,10 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel",
+    "torch",
+    "pybind11"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
