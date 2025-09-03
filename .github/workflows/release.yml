@@ -8,6 +8,8 @@ on:
 jobs:
   build_wheel:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     container:
       image: pytorch/pytorch:2.4.0-cuda12.4-cudnn9-devel
 
@@ -39,8 +41,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
           body: ${{ steps.extract_changelog.outputs.changelog }}
           draft: false
           prerelease: false
